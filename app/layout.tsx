@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import { Toaster } from "sonner";
 
 import { ThemeProvider } from "@/components/theme-provider";
+
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,13 +22,18 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider appearance={{ baseTheme: dark }}>
-      <html lang="en">
+      <html lang='en'>
         <body className={inter.className}>
           <ThemeProvider
-            attribute="class"
-            forcedTheme="dark"
-            storageKey="gameonlive-theme"
+            attribute='class'
+            forcedTheme='dark'
+            storageKey='gameonlive-theme'
           >
+            <Toaster
+              theme='light'
+              position='bottom-center'
+              richColors
+            />
             {children}
           </ThemeProvider>
         </body>

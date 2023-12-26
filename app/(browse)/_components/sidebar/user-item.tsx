@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useSidebar } from "@/store/user-sidebar";
+import { useSidebar } from "@/store/use-sidebar";
 import Link from "next/link";
 import { UserAvatar } from "@/components/user-avatar";
 import { LiveBadge } from "@/components/live-badge";
