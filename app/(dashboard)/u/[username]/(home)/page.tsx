@@ -1,6 +1,6 @@
 import { getSelfByUsername } from "@/lib/auth-service";
 import { redirect } from "next/navigation";
-import { StreamPlayer } from "./_components/stream-player";
+import { StreamPlayer } from "@/components/stream-player";
 
 interface CreatorPageProps {
   params: { username: string };
@@ -9,15 +9,15 @@ interface CreatorPageProps {
 const CreatorPage = async ({ params }: CreatorPageProps) => {
   const user = await getSelfByUsername(params.username);
 
-  if (!user) {
-    redirect(`/${params.username}`);
-  }
+  if (!user) redirect(`/${params.username}`);
+
+  if (!user?.stream) redirect(`/`);
 
   return (
     <div className='h-full'>
       <StreamPlayer
         user={user}
-        stream={user?.stream}
+        stream={user.stream}
         isFollowing
       />
     </div>

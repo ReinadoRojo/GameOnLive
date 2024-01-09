@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 import { db } from "@/lib/db";
 import { getSelf } from "@/lib/auth-service";
 
-export const updateStream = async (values: Partial<Stream>) => {
+export const updateStream = async (values: Partial<User>) => {
   try {
     const self = await getSelf();
     const selfStream = await db.stream.findUnique({
@@ -15,11 +15,12 @@ export const updateStream = async (values: Partial<Stream>) => {
 
     if (!selfStream) throw new Error("Stream not found");
 
-    const validData = {
+    const validData: Partial<Stream> = {
       name: values.name,
       isChatEnabled: values.isChatEnabled,
       isChatDelayed: values.isChatDelayed,
       isChatFollowersOnly: values.isChatFollowersOnly,
+      thumbnailUrl: values.thumbnailUrl,
     };
 
     const stream = await db.stream.update({

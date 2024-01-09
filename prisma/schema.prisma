@@ -19,7 +19,7 @@ model User {
   externalUserId String @unique
   bio String? @db.Text
 
-  canStream Boolean @default(true)
+  canStream Boolean @default(true) // If you want to limit access
 
   following Follow[] @relation("Following")
   followedBy Follow[] @relation("FollowedBy")
