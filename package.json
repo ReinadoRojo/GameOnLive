@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "vercelbuild": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "addComponent": "npx shadcn-ui@latest add"
